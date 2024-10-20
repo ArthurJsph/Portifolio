@@ -1,20 +1,14 @@
 
 {
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
-    { "handle": "filesystem" },
     {
-      "src": "/src/main.jsx",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/.well-known/*",
-      "status": 200,
-      "headers": {
-        "Cache-Control": "public, max-age=3600"
-      }
-    },
-    {
-      "src": ".*",
+      "src": "/(.*)",
       "dest": "/index.html"
     }
   ]
