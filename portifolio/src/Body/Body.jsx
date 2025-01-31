@@ -15,7 +15,7 @@ import CSS from '../assets/css3.svg';
 import Springboot from '../assets/springboot.svg';
 import Profile from '../assets/profile-pic.webp';
 import TaskManagerImg from '../assets/taskM.webp';
-import MenuAppImg from '../assets/cardapio-Img.webp';
+import MenuAppImg from '../assets/Cardapio-Img.webp';
 import LibraryImg from '../assets/biblioteca-Img.webp';
 
 
