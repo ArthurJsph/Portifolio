@@ -1,30 +1,55 @@
+:root {
+  --font-grande: 'TT Hoves Pro Trial', sans-serif;
+  --font-pequena: 'ClashGrotesk-Light', sans-serif;
+  --color-black: #000;
+  --color-gray1: #3d4143;
+  --color-gray2: #9c9d9d;
+  --color-white: #f6f6f6;
+  --color-destaque1: #e7fc00;
+  --color-destaque2: #728e6f;
+}
+
+/* Navbar principal */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(51, 51, 51, 0.8); /* Fundo com transparência */
+  background-color: var(--color-gray2);
   padding: 10px 20px;
   position: fixed;
-  width: 97%; /* Faz a navbar preencher toda a largura */
+  width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000; /* Garante que fique acima de outros elementos */
+  z-index: 1000;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .navbar:hover {
-  backdrop-filter: blur(8px); /* Desfoca o fundo no hover */
-  background-color: rgba(51, 51, 51, 0.9); /* Ajusta o fundo ligeiramente no hover */
+  backdrop-filter: blur(8px);
 }
 
+/* Logo da navbar */
 .navbar-brand {
-  color: white;
+  color: black;
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
 }
 
+.navbar-brand a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* Links da navbar */
 .navbar-links {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.navbar-links ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -36,54 +61,92 @@
 }
 
 .navbar-links a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s ease;
+  font-weight: bolder;
 }
 
-.navbar-links a:hover {
-  color: lightblue;
-}
-
-/* Estilos para o efeito de linha no hover dos itens */
-ul li {
+/* Efeito de hover nos links */
+.navbar-links li {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-ul li:before {
+.navbar-links li:before {
   content: "";
   position: absolute;
-  inset: calc(100% - 3px) 0 0 0; /* Espessura da linha */
-  background: lightgray; /* Cor da linha */
+  inset: calc(100% - 3px) 0 0 0;
+  background: lightgray;
   scale: 0 1;
-  transition: .3s, translate 0s .3s;
+  transition: 0.3s, translate 0s 0.3s;
 }
 
-ul:hover li:before {
+.navbar-links:hover li:before {
   scale: 1;
 }
 
-ul li:hover:before {
+.navbar-links li:hover:before {
   translate: 0;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-ul:hover li:has(~ li:hover):before {
+.navbar-links:hover li:has(~ li:hover):before {
   translate: 100% 0;
-  transition: .2s .2s, scale 0s .4s;
+  transition: 0.2s 0.2s, scale 0s 0.4s;
 }
 
-ul:hover li:hover ~ li:before {
+.navbar-links:hover li:hover ~ li:before {
   translate: -100% 0;
-  transition: .2s .2s, scale 0s .4s;
+  transition: 0.2s 0.2s, scale 0s 0.4s;
 }
 
-.navbar-brand a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
+/* Menu de três listras (hamburger) */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .navbar-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-gray2);
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
 }

@@ -3,3 +3,11 @@
   font-weight: 100;
   font-style: normal;
 }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100vw;
+}
